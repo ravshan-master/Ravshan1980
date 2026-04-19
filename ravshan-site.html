@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Равшан — Электрика и Сантехника | Бишкек</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #161616;
+    --accent: #e8c44a;
+    --accent2: #f0d060;
+    --text: #f0ede8;
+    --muted: #888;
+    --border: rgba(232,196,74,0.15);
+    --wa: #25D366;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(232,196,74,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,196,74,0.04) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(232,196,74,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,196,74,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  h1 span { color: var(--accent); }
+  .hero-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(18px, 3.5vw, 40px);
+    letter-spacing: 5px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .hero-desc {
+    max-width: 580px;
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 44px;
+    position: relative;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; position: relative; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #000;
+    padding: 16px 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,196,74,0.3); }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(240,237,232,0.2);
+    color: var(--text);
+    padding: 16px 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 72px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    letter-spacing: 3px; line-height: 1; margin-bottom: 16px;
+  }
+  .section-desc { color: var(--muted); font-size: 14px; max-width: 560px; margin-bottom: 60px; line-height: 1.8; }
+
+  /* SERVICES */
+  #services { background: var(--bg2); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+  .service-card {
+    background: var(--bg3);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--accent); transition: height 0.4s;
+  }
+  .service-card:hover::before { height: 100%; }
+  .service-card:hover { background: #1a1a1a; transform: translateY(-4px); }
+  .service-icon { font-size: 36px; margin-bottom: 24px; }
+  .service-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; margin-bottom: 16px; }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .service-list li { font-size: 13px; color: #999; padding-left: 18px; position: relative; line-height: 1.5; }
+  .service-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+  /* PROCESS */
+  #process { background: var(--bg); }
+  .process-steps { display: flex; flex-direction: column; max-width: 800px; }
+  .step { display: flex; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--border); align-items: flex-start; transition: all 0.3s; }
+  .step:hover .step-num { color: var(--accent); }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: #222; line-height: 1; min-width: 56px; transition: color 0.3s; }
+  .step-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; margin-bottom: 10px; }
+  .step-text { font-size: 13px; color: #888; line-height: 1.8; }
+  .step-sub { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .step-sub-item { font-size: 13px; color: #777; padding-left: 18px; position: relative; line-height: 1.6; }
+  .step-sub-item::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: 0.6; }
+  .step-sub-label { font-weight: 700; color: #aaa; }
+
+  /* WHY */
+  #why { background: var(--bg2); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; }
+  .why-card { background: var(--bg3); padding: 40px 32px; }
+  .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 72px; color: rgba(232,196,74,0.08); line-height: 1; margin-bottom: 16px; }
+  .why-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; margin-bottom: 12px; }
+  .why-text { font-size: 13px; color: #888; line-height: 1.7; }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .contact-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 52px); letter-spacing: 3px; margin-bottom: 8px; }
+  .contact-role { color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+  .contact-location { display: flex; align-items: center; gap: 10px; color: #888; font-size: 13px; margin-bottom: 40px; }
+  .contact-btns { display: flex; flex-direction: column; gap: 14px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px;
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none; border-radius: 2px; transition: all 0.3s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--bg3); transform: translateX(6px); }
+  .contact-link-icon { font-size: 22px; }
+  .contact-link-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .contact-link-val { font-weight: 600; font-size: 14px; }
+  .contact-deco { display: flex; justify-content: center; align-items: center; }
+  .contact-deco-inner {
+    width: 280px; height: 280px;
+    border: 1px solid var(--border); border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; position: relative;
+  }
+  .contact-deco-inner::before {
+    content: ''; position: absolute; inset: 20px;
+    border: 1px solid var(--border); border-radius: 50%;
+  }
+  .contact-deco-text { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 4px; color: var(--accent); text-align: center; line-height: 1.5; }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg2); border-top: 1px solid var(--border);
+    padding: 32px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; color: var(--accent); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* FLOATING WHATSAPP */
+  .wa-float {
+    position: fixed; bottom: 32px; right: 28px;
+    z-index: 999; display: flex; align-items: center;
+  }
+  .wa-label {
+    background: #fff; color: #111;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    padding: 10px 18px 10px 20px;
+    border-radius: 30px 0 0 30px;
+    box-shadow: -4px 4px 20px rgba(0,0,0,0.3);
+    opacity: 0; transform: translateX(20px);
+    transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    pointer-events: none; white-space: nowrap;
+  }
+  .wa-float:hover .wa-label { opacity: 1; transform: translateX(0); }
+  .wa-btn {
+    width: 62px; height: 62px;
+    background: var(--wa); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+    transition: all 0.3s; position: relative; z-index: 1;
+  }
+  .wa-btn:hover { background: #1ebe5a; transform: scale(1.1); box-shadow: 0 10px 36px rgba(37,211,102,0.6); }
+  .wa-btn svg { width: 30px; height: 30px; fill: #fff; }
+  .wa-pulse {
+    position: absolute; inset: -4px; border-radius: 50%;
+    border: 2px solid var(--wa);
+    animation: pulse 2.2s ease-out infinite;
+  }
+  @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.8); opacity: 0; } }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 5%; }
+    .nav-links { display: none; }
+    #hero { padding: 100px 5% 60px; }
+    .hero-stats { gap: 32px; margin-top: 48px; padding-top: 32px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .contact-deco { display: none; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .wa-float { bottom: 24px; right: 20px; }
+    .wa-btn { width: 56px; height: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">РАВШАН</a>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#why">Преимущества</a></li>
+    <li><a href="#contact" class="nav-cta">Контакты</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-tag">📍 Бишкек</div>
+  <h1><span>РАВШАН</span></h1>
+  <div class="hero-sub">ЭЛЕКТРИКА · САНТЕХНИКА · ОТОПЛЕНИЕ</div>
+  <p class="hero-desc">
+    Инженерное оснащение квартир и частных домов. Полный спектр монтажных услуг в новостройках и частном секторе Бишкека. Стаж 20+ лет. Работаем от черновой разводки до финального запуска. Надёжность на долгие годы вашего спокойствия.
+  </p>
+  <div class="hero-btns">
+    <a href="https://wa.me/996559473020" class="btn-primary" target="_blank">💬 Написать в WhatsApp</a>
+    <a href="tel:+996559473020" class="btn-outline">📞 Позвонить</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">20+</div><div class="stat-label">Лет стажа</div></div>
+    <div><div class="stat-num">1 год</div><div class="stat-label">Гарантия на работы</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">Что мы делаем</div>
+  <h2 class="section-title">НАШИ УСЛУГИ</h2>
+  <p class="section-desc">Полный цикл инженерного оснащения — от чернового монтажа до финальной сдачи объекта</p>
+
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">⚡</div>
+      <div class="service-title">ЭЛЕКТРОМОНТАЖНЫЕ РАБОТЫ</div>
+      <ul class="service-list">
+        <li>Монтаж щитов и автоматики</li>
+        <li>Защита от скачков напряжения</li>
+        <li>Разводка под бытовую технику и автоматику</li>
+        <li>Прокладка кабелей (штробление без пыли)</li>
+        <li>Монтаж силовых узлов</li>
+        <li>Проверка линий под нагрузкой</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.1s">
+      <div class="service-icon">🔧</div>
+      <div class="service-title">САНТЕХНИКА И ОТОПЛЕНИЕ</div>
+      <ul class="service-list">
+        <li>Монтаж водопровода, канализации и коллекторных узлов</li>
+        <li>Тёплые полы: расчёт по контурам</li>
+        <li>Котлы: установка настенных и напольных</li>
+        <li>Котельное оборудование: гидрострелка и развязка</li>
+        <li>Чистовая сантехника: смесители, раковины, унитазы, гигиенический душ и т. д.</li>
+        <li>Опрессовка системы водоснабжения и отопления</li>
+      </ul>
+    </div>
+    <div class="service-card fade-up" style="transition-delay:0.2s">
+      <div class="service-icon">📦</div>
+      <div class="service-title">СНАБЖЕНИЕ И КОМПЛЕКТАЦИЯ</div>
+      <ul class="service-list">
+        <li>Берём закупку на себя, если нет времени</li>
+        <li>Подбор вариантов под ваш бюджет</li>
+        <li>Окончательное решение — за вами</li>
+        <li>Гарантия доставки оригинальной продукции</li>
+        <li>Полная отчётность по чекам</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">Как мы работаем</div>
+  <h2 class="section-title">ПРОЦЕСС РАБОТЫ</h2>
+  <p class="section-desc">Прозрачный процесс без сюрпризов — от первого звонка до сдачи объекта</p>
+
+  <div class="process-steps">
+    <div class="step fade-up">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-tag">Старт</div>
+        <div class="step-title">ТЕХНИЧЕСКИЙ ПЛАН</div>
+        <div class="step-text">Работаем по вашему дизайн-проекту или помогаем грамотно расставить точки, опираясь на свой опыт и учитывая пожелания заказчика.</div>
+      </div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-tag">Согласование</div>
+        <div class="step-title">МАТЕРИАЛЫ И СМЕТА</div>
+        <div class="step-text">Подбор материалов под ваш выбор и бюджет. Утверждение фиксированной стоимости работ. Цена может меняться при дополнительных услугах либо в обратном процессе.</div>
+      </div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-tag">Монтаж</div>
+        <div class="step-title">ЧЕРНОВОЙ МОНТАЖ</div>
+        <div class="step-sub">
+          <div class="step-sub-item"><span class="step-sub-label">Электрика:</span> прокладка кабелей и монтаж силовых узлов</div>
+          <div class="step-sub-item"><span class="step-sub-label">Сантехника:</span> прокладка труб, монтаж водопроводных узлов, гидрострелки и развязки</div>
+        </div>
+      </div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-tag">Проверка</div>
+        <div class="step-title">КОНТРОЛЬ КАЧЕСТВА</div>
+        <div class="step-sub">
+          <div class="step-sub-item"><span class="step-sub-label">Электрика:</span> проверка линий под нагрузкой</div>
+          <div class="step-sub-item"><span class="step-sub-label">Сантехника:</span> опрессовка системы водоснабжения и отопления</div>
+          <div class="step-sub-item"><span class="step-sub-label">Общее:</span> фотофиксация всех скрытых трасс. Гарантия 1 год на все выполненные работы</div>
+        </div>
+      </div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">05</div>
+      <div>
+        <div class="step-tag">Финал</div>
+        <div class="step-title">ЧИСТОВОЙ МОНТАЖ</div>
+        <div class="step-text">Установка розеток, светильников и сантехники после завершения отделочных работ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-label">Почему выбирают нас</div>
+  <h2 class="section-title">НАШИ ПРЕИМУЩЕСТВА</h2>
+  <div class="why-grid">
+    <div class="why-card fade-up">
+      <div class="why-num">01</div>
+      <div class="why-title">РАБОТА ПО ПРОЕКТУ</div>
+      <div class="why-text">Работаем строго по дизайн-проекту. Если проекта нет — помогаем грамотно составить план с учётом ваших пожеланий.</div>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:0.1s">
+      <div class="why-num">02</div>
+      <div class="why-title">ФИКСИРОВАННАЯ ЦЕНА</div>
+      <div class="why-text">Стоимость утверждается до начала монтажа. Цена может меняться при дополнительных услугах либо в обратном процессе.</div>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:0.2s">
+      <div class="why-num">03</div>
+      <div class="why-title">ЧИСТО И АККУРАТНО</div>
+      <div class="why-text">Штробление только с пылесосом. Фотофиксация всех скрытых трасс. Убираем после себя по завершении работ.</div>
+    </div>
+    <div class="why-card fade-up" style="transition-delay:0.3s">
+      <div class="why-num">04</div>
+      <div class="why-title">ПОЛНАЯ ОТЧЁТНОСТЬ</div>
+      <div class="why-text">При закупке материалов — чеки на руки. Только оригинальная продукция. Прозрачность на каждом этапе.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Свяжитесь с нами</div>
+  <h2 class="section-title">НАЧНЁМ ВАШИ РАБОТЫ</h2>
+  <p class="section-desc">Опишите задачу — ответим быстро и назовём стоимость</p>
+
+  <div class="contact-inner">
+    <div class="contact-info fade-up">
+      <div class="contact-name">РАВШАН</div>
+      <div class="contact-role">Мастер · Электрика · Сантехника · Отопление</div>
+      <div class="contact-location">📍 Бишкек</div>
+      <div class="contact-btns">
+        <a href="https://wa.me/996559473020" class="contact-link" target="_blank">
+          <span class="contact-link-icon">💬</span>
+          <div>
+            <div class="contact-link-label">Написать в WhatsApp</div>
+            <div class="contact-link-val">+996 559 473 020</div>
+          </div>
+        </a>
+        <a href="tel:+996559473020" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <div>
+            <div class="contact-link-label">Позвонить</div>
+            <div class="contact-link-val">+996 559 473 020</div>
+          </div>
+        </a>
+        <a href="tel:+996700802045" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <div>
+            <div class="contact-link-label">Второй номер</div>
+            <div class="contact-link-val">+996 700 802 045</div>
+          </div>
+        </a>
+        <a href="https://taplink.cc/ravshan_master" class="contact-link" target="_blank">
+          <span class="contact-link-icon">🗂️</span>
+          <div>
+            <div class="contact-link-label">Портфолио работ</div>
+            <div class="contact-link-val">Смотреть проекты →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-deco fade-up">
+      <div class="contact-deco-inner">
+        <div class="contact-deco-text">20+<br>ЛЕТ<br>СТАЖА<br><br>ГАРАНТИЯ<br>1 ГОД</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">РАВШАН</div>
+  <div class="footer-copy">Электрика · Сантехника · Отопление · Бишкек · © 2025</div>
+  <ul class="footer-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#why">Преимущества</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<div class="wa-float">
+  <div class="wa-label">Написать в WhatsApp</div>
+  <a href="https://wa.me/996559473020" class="wa-btn" target="_blank" aria-label="WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
